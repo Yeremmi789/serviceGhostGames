@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
 
-            $table->unsignedBigInteger('rol_id');
-            $table->foreign('rol_id')->references('id')->on('roles');
+            // $table->unsignedBigInteger('rol_id');
+            // $table->foreign('rol_id')->references('id')->on('roles');
 
             $table->integer('activo');
             $table->string('ultimo_acceso')->nullable();

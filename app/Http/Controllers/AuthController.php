@@ -72,10 +72,14 @@ class AuthController extends Controller
                 'password' => bcrypt($request->password),
                 'apellido' => $request->apellido,
                 "usuario" => $request->usuario,
-                "rol_id" => 2,
+                // "rol_id" => 2,
                 "activo" => 1,
                 "ultimo_acceso" => Carbon::now(),
             ]);
+
+            $userID = $user->id;
+            $user->assignRole('Usuario');
+            // $user->assignRole('Admin');
 
             return response()->json([
                 'message' => 'Usuario creado exitosamente :D!',
@@ -98,6 +102,11 @@ class AuthController extends Controller
 
         // ]);
 
+
+    }
+
+
+    public function userList(){
 
     }
 

@@ -10,7 +10,7 @@ class Roles extends Model
 {
     use HasFactory;
 
-    public function users(): HasMany{ // Un rol lo tienen muchos usuarios <-> un usuario tiene un rol
-        return $this->hasMany(User::class, 'rol_id');
-    }
+    // public function users(): HasMany{ // Un rol lo tienen muchos usuarios <-> un usuario tiene un rol
+    //     return $this->hasMany(User::class, 'rol_id');
+    // }
 }

@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Roles;
 use Laravel\Sanctum\HasApiTokens;
 
-use App\Models\Roles;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
@@ -20,6 +21,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    use HasRoles;
     protected $fillable = [
         'name',
         'email',
@@ -47,9 +49,9 @@ class User extends Authenticatable
      * @return array<string, string>
      */
 
-     public function role(): BelongsTo{ // Un usuario tiene un rol <-> Un rol lo tienen muchos usuarios
-        return $this->belongsTo(Roles::class, 'rol_id');
-     }
+    //  public function role(): BelongsTo{ // Un usuario tiene un rol <-> Un rol lo tienen muchos usuarios
+    //     return $this->belongsTo(Roles::class, 'rol_id');
+    //  }
 
 
     protected function casts(): array
