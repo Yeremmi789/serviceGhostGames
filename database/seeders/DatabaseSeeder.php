@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Categoria;
 use App\Models\User;
 use Carbon\Carbon;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -43,14 +44,25 @@ class DatabaseSeeder extends Seeder
             "apellido" => "Test apellido",
             "usuario" => 'Name User Test',
             "password" => '1234567890',
-            "rol_id" => 2,
+            // "rol_id" => 2,
             "activo" => 1,
             "ultimo_acceso" => Carbon::now(),
         ]);
 
+        $categorias = [
+            'Acción', 'Aventura', 'Rol (RPG)', 'Estrategia', 'Simulación',
+            'Deportes', 'Carreras', 'Terror', 'Combate', 'Música y Ritmo'
+        ];
+
+        // Crear una categoría a la vez
+        foreach ($categorias as $categoria) {
+            Categoria::create([
+                'categoria' => $categoria,
+                'descripcion' => 'Descripción de ' . $categoria,
+                'activo' => true, 
+            ]);
+        }
+
 
     }
-
-
-
 }

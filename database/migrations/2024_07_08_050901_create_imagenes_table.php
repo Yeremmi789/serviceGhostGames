@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('responsabilidades', function (Blueprint $table) {
+        Schema::create('imagenes', function (Blueprint $table) {
             $table->id();
-            $table->string("rol")->unique();
-            $table->integer("activo");
-            $table->string("descripcion")->nullable();
+            $table->string('imagen');
+            $table->unsignedBigInteger('juego_id');
+            $table->foreign('juego_id')->references('id')->on('games');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('responsabilidades');
+        Schema::dropIfExists('imagenes');
     }
 };

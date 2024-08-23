@@ -13,16 +13,17 @@ return new class extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('categoria');
-            $table->integer('activo');
-            $table->float('precio');
+            $table->string('name')->unique();
+            //$table->string('categoria');
+            $table->float('precio',4,2);
             $table->string('plataforma');
-
+            $table->string('portada');
+            
             $table->unsignedBigInteger('categoria_id');
             $table->foreign('categoria_id')->references('id')->on('categorias');
-
-            $table->date('lanzamiento');
+            
+            $table->date('lanzamiento')->nullable();
+            $table->integer('activo');
             $table->timestamps();
         });
     }
